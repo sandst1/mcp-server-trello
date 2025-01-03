@@ -1,4 +1,4 @@
-# MCP Trello Server
+# MCP Server Trello
 
 A Model Context Protocol (MCP) server that provides tools for interacting with Trello boards. This server enables seamless integration with Trello's API while handling rate limiting, type safety, and error handling automatically.
 
