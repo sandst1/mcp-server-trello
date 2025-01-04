@@ -29,12 +29,11 @@ Follow these steps for each interaction:
             - Tasks
         - Connect them to the current entities using relations  
         - Store facts about them as observations
-4. Examine the current state of the code at '//wsl.localhost/Ubuntu/home/delorenj/code/IdealScenario'
-     a. Look at in along side the context of the last few git commits to help hone in on active trajectory
+4. Examine the current state of the codebase. Use git to check the last few commits.
+    a. Look at in along side the context of the last few git commits to help hone in on active trajectory
 	b. Always remember where we left off so we can continue development in the next session
-	c. Always be thinking of where we should focus our attention next in order to maximize efficiency and lower friction. If no clear priority can be discerned, use your expert knowledge and experience as an accomplished infrastructure engineer to make an informed decision for me.
+	c. Always be thinking of where we should focus our attention next in order to maximize efficiency and lower friction. If no clear priority can be discerned, use your expert knowledge and experience as an industry expert in order  to make an informed decision for me.
 	d. Be sure to store in memory, and always have ready, the result of c.
-5. Make sense of and triangulate our current project trajectory by analyzing the last few commits. Try to see where we are coming from and where we are headed in the short-term.
 
 ## Coding Rules
 

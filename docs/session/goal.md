@@ -4,15 +4,8 @@ Help me thoroughly test this server's functionality.
 
 ## Requirements
 
-
-# Goal
-
-Help me thoroughly test this server's functionality.
-
-## Requirements
-
-- [ ] Test `get_cards_by_list_id` tool
-- [ ] Test `get_lists` tool
+- [x] Test `get_cards_by_list_id` tool
+- [x] Test `get_lists` tool
 - [ ] Test `get_recent_activity` tool
 - [ ] Test `add_card_to_list` tool
 - [ ] Test `update_card_details` tool
