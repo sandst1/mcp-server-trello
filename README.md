@@ -13,7 +13,7 @@ A Model Context Protocol (MCP) server that provides tools for interacting with T
 ## Installation
 
 ```bash
-npm install @modelcontextprotocol/server-trello
+npm install @modelcontextprotocol/mcp-server-trello
 ```
 
 ## Configuration
