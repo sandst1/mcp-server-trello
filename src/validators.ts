@@ -76,6 +76,7 @@ export function validateUpdateCardRequest(args: Record<string, unknown>): {
   description?: string;
   dueDate?: string;
   labels?: string[];
+  listId?: string;
 } {
   if (!args.cardId) {
     throw new McpError(ErrorCode.InvalidParams, 'cardId is required');
@@ -86,6 +87,23 @@ export function validateUpdateCardRequest(args: Record<string, unknown>): {
     description: validateOptionalString(args.description),
     dueDate: validateOptionalString(args.dueDate),
     labels: validateOptionalStringArray(args.labels),
+    listId: validateOptionalString(args.listId),
+  };
+}
+
+export function validateMoveCardRequest(args: Record<string, unknown>): {
+  cardId: string;
+  listId: string;
+} {
+  if (!args.cardId) {
+    throw new McpError(ErrorCode.InvalidParams, 'cardId is required');
+  }
+  if (!args.listId) {
+    throw new McpError(ErrorCode.InvalidParams, 'listId is required');
+  }
+  return {
+    cardId: validateString(args.cardId, 'cardId'),
+    listId: validateString(args.listId, 'listId'),
   };
 }
 

@@ -4,7 +4,11 @@ import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import express, { Request, Response } from 'express';
 import { z } from 'zod';
 import { TrelloClient } from './trello-client.js';
-import { validateAddCardRequest, validateUpdateCardRequest } from './validators.js';
+import {
+  validateAddCardRequest,
+  validateUpdateCardRequest,
+  validateMoveCardRequest
+} from './validators.js';
 
 import 'dotenv/config';
 
@@ -114,6 +118,21 @@ class TrelloServer {
         labels?: string[];
       }) => {
         const validArgs = validateUpdateCardRequest(args);
+        const card = await this.trelloClient.updateCard(validArgs);
+        return {
+          content: [{ type: 'text', text: JSON.stringify(card, null, 2) }],
+        };
+      }
+    );
+
+    this.server.tool(
+      'move_card_to_list',
+      {
+        cardId: z.string().describe('ID of the card to update'),
+        listId: z.string().describe('ID of the target list'),
+      },
+      async (args: { cardId: string; listId: string }) => {
+        const validArgs = validateMoveCardRequest(args);
         const card = await this.trelloClient.updateCard(validArgs);
         return {
           content: [{ type: 'text', text: JSON.stringify(card, null, 2) }],
