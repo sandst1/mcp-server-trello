@@ -136,6 +136,21 @@ Update an existing card's details.
 }
 ```
 
+### move_card_to_list
+Move card to a list. Uses same REST API call as `update_card_details`
+but LLMs understand card moving better when it's a separate tool.
+
+```typescript
+{
+  name: 'move_card_to_list',
+  arguments: {
+    cardId: string,       // ID of the card to update
+    listId: string        // ID of the target list
+  }
+}
+```
+
+
 ### archive_card
 Send a card to the archive.
 
