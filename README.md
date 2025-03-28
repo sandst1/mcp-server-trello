@@ -2,6 +2,8 @@
 
 A Model Context Protocol (MCP) server that provides tools for interacting with Trello boards. This server enables seamless integration with Trello's API while handling rate limiting, type safety, and error handling automatically.
 
+This project is forked from https://github.com/delorenj/mcp-server-trello, the server has been converted into an SSE server using HTTP and Docker configuration has been added.
+
 ## Features
 
 - **Full Trello Board Integration**: Interact with cards, lists, and board activities
@@ -10,27 +12,48 @@ A Model Context Protocol (MCP) server that provides tools for interacting with T
 - **Input Validation**: Robust validation for all API inputs
 - **Error Handling**: Graceful error handling with informative messages
 
-## Installation
+## Run in docker
 
-```bash
-npm install @modelcontextprotocol/mcp-server-trello
+```
+# Create a .env file
+cp example.env .env
+
+# Then set the correct variables into .env:
+# BOARD_ID=<YOUR-BOARD-ID>
+# API_KEY=<YOUR-API-KEY> # https://trello.com/app-key
+# TOKEN=<YOUR-APP-TOKEN> # https://trello.com/1/authorize?expiration=never&name=YOUR_TRELLO_WORKSPACE&scope=read,write&response_type=token&key=YOUR_API_KEY
+PORT=8989
+
+# Start the server in docker in the background
+docker-compose up -d
+
+# When done, stop the server
+docker-compose down
 ```
 
 ## Configuration
-
 Add the server to your MCP settings file with the following configuration:
 
+VS Code:
+```json
+{
+  "mcp": {
+    "servers": {
+      "trello": {
+        "type": "sse",
+        "url": "http://localhost:8989/sse"
+      }
+    }
+  }
+}
+```
+
+Cursor:
 ```json
 {
   "mcpServers": {
     "trello": {
-      "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-trello"],
-      "env": {
-        "TRELLO_API_KEY": "your-api-key",
-        "TRELLO_TOKEN": "your-token",
-        "TRELLO_BOARD_ID": "your-board-id"
-      }
+      "url": "http://localhost:8989/sse"
     }
   }
 }
@@ -41,6 +64,9 @@ Add the server to your MCP settings file with the following configuration:
 - `TRELLO_API_KEY`: Your Trello API key (get from https://trello.com/app-key)
 - `TRELLO_TOKEN`: Your Trello token (generate using your API key)
 - `TRELLO_BOARD_ID`: ID of the Trello board to interact with (found in board URL)
+
+### Optional
+- `PORT`: The port in which the Docker container runs
 
 ## Available Tools
 

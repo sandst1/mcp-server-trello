@@ -25,5 +25,5 @@ RUN npm install --production --ignore-scripts
 COPY --from=builder /app/build ./build
 
 # Expose port and run the application
-EXPOSE 8989
+EXPOSE ${PORT:-8989}
 CMD ["node", "build/index.js"]
